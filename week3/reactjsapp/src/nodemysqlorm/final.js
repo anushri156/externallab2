@@ -73,7 +73,7 @@ instance.get("/emp",(request,response)=>{
     sequelize.sync({
         force:false
     }).then(()=>
-           emp.findAll() // select all recodrs from Department table
+           emp.findAll()
         )
    
     .then((data) => {
