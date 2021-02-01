@@ -72,10 +72,9 @@ const emp = require(path.join(__dirname, './models/employee'))(sequelize, Sequel
 instance.get("/emp",(request,response)=>{
     sequelize.sync({
         force:false
-    }).then(async()=>{
-        let r = await sequelize.query('select * from employee ',{ type: Sequelize.QueryTypes.SELECT })
-        return r
-     })
+    }).then(()=>
+           emp.findAll() // select all recodrs from Department table
+        )
    
     .then((data) => {
                     response.json({ stausCode: 200, rowCount: data.length, response: data });
